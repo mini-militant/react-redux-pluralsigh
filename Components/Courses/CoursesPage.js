@@ -8,18 +8,19 @@ class CoursesPage extends React.Component{
       course:{
         title:""
       }
-    }
-    this.handleChange=this.handleChange.bind(this)
+    };
+    
   }
 
-  handleChange(event){
-    const course={ ...this.state.course,title:event.target.value};
+  handleChange=(event)=>{
+    
+    const course={ ...this.state.course, title:event.target.value };
     //the above code creates a copy of course object with an updated title.
     //with object spread, values on the right override those on the left.
-    this.state({
+    this.setState({
       course:course
     });
-    event.preventDefault();
+ 
   }
 
 
