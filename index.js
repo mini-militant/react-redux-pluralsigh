@@ -8,13 +8,11 @@ import {Provider} from 'react-redux'
 
 const store=ConfigureStore();
 
-
 render(
   <Provider store={store}>
     <Router>
       <App />
     </Router>
   </Provider>
-  , document.getElementById('root')
-  
+  , document.getElementById('root')  
   );

@@ -25,7 +25,7 @@ class CoursesPage extends React.Component{
 
   handleSubmit=(event)=>{
     event.preventDefault();
-    this.props.dispatch(CourseActions.createCourse(this.state.course));
+    this.props.createCourse(this.state.course);
   } 
 
   render(){
@@ -49,8 +49,8 @@ class CoursesPage extends React.Component{
 }
 
 CoursesPage.propTypes={
-  courses:PropTypes.array.isRequired,
-  dispatch : PropTypes.func.isRequired
+  courses : PropTypes.array.isRequired,
+  createCourse : PropTypes.func.isRequired
 }
 
 //this function determines what state is passed to our component via props.
@@ -60,10 +60,14 @@ function mapStateToProps(state, ownProps){
   }
 }
 
-{/*  //this function lets us declare what actions to pass to our component on props.
-function mapDispatchToProps(){
+//this function lets us declare what actions to pass to our component on props.
+function mapDispatchToProps(dispatch){
+  return{
+    //if you dont call dispatch, nothing will happen.Redux get notifies for actions by dispatch.
+    createCourse : course => dispatch(CourseActions.createCourse(course))
+  }
+}
 
-}} */}
-
-export default connect(mapStateToProps )( CoursesPage )
+export default connect(mapStateToProps, mapDispatchToProps )( CoursesPage )
 //connect returns a fuction.That function then calls our component .
+//mapDispatchToProps in connect determines what actions are available on props in our component.
