@@ -1,9 +1,9 @@
 import * as types from'./ActionTypes'
 
-export function createCourse(course){
+export function createCourse(courseName){
   return{
     type:types.CREATE_COURSE,
-    course:course
+    course:courseName
   }
 }
 

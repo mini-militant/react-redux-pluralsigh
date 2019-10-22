@@ -16,12 +16,13 @@ class CoursesPage extends React.Component{
   }
 
   handleChange=(event)=>{    
-    const course={ ...this.state.course, title:event.target.value };
+    const courseName={ ...this.state.course, title:event.target.value };
     //the above code creates a copy of course object with an updated title.
     //with object spread, values on the right override those on the left.
     this.setState({
-      course:course
+      course:courseName
     });
+   
    }
 
   handleSubmit=(event)=>{
@@ -30,6 +31,7 @@ class CoursesPage extends React.Component{
   } 
 
   render(){
+    console.log(this.props)
     return(
       <form onSubmit={this.handleSubmit}>
         <h2>Courses</h2>
@@ -41,7 +43,7 @@ class CoursesPage extends React.Component{
         />
 
         <input type="submit" value="Save"/>
-        {this.props.courses.map(course=>(
+        {this.props.coursesR.map(course=>(
           <div key={course.title}>{course.title}</div>
         ))}
       </form>
@@ -50,14 +52,15 @@ class CoursesPage extends React.Component{
 }
 
 CoursesPage.propTypes={
-  courses : PropTypes.array.isRequired,
+  coursesR : PropTypes.array.isRequired,
   actions : PropTypes.object.isRequired
 }
 
 //this function determines what state is passed to our component via props.
 function mapStateToProps(state, ownProps){
+  console.log('mao state to props',state)
   return{
-    courses:state.courses   //be specific.request only the data that your component needs.
+    coursesR:state.coursesRoot   //be specific.request only the data that your component needs.
   }
 }
 
